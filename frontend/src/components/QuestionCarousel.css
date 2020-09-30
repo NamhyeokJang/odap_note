@@ -1,0 +1,32 @@
+.question-carousel {
+  position: relative;
+}
+
+
+
+
+
+/* Question Css */
+.question-carousel__question {
+  height: 75vh;
+  position: relative;
+}
+
+.question-carousel__question-important {
+  color: var(--yellow);
+  margin-top: 10px;
+  font-size: 1.1rem;
+}
+
+.question-carousel__question-text {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.question-carousel__question-handler {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}

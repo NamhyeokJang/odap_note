@@ -1,0 +1,41 @@
+@import '~antd/dist/antd.css';
+
+:root {
+  --primary: #192a56;
+  --red: #e84118;
+  --blue: #00a8ff;
+  --yellow: #fbc531;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+.container {
+  width: 1080px;
+  padding: 0 50px;
+  margin: 0 auto;
+}
+
+.view {
+  height: calc(100vh - 80px);
+  overflow: auto;
+}
+
+.view::-webkit-scrollbar {
+  display: none;
+}
+
+
+
+@media screen and (max-width: 960px) {
+  .container {
+    width: 100%;
+    padding: 0 15px;
+  }
+
+  .view {
+    height: calc(100vh - 60px);
+  }
+}

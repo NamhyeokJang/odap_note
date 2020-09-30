@@ -1,0 +1,11 @@
+
+
+.view-editor-category__question {
+  margin-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--blue);
+}
+
+.view-editor-category__question label {
+  text-decoration: underline;
+}

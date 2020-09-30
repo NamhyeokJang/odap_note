@@ -1,0 +1,19 @@
+.view-question {
+  position: relative;
+}
+
+.view-question__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+.view-question__title {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.view-question__fav {
+  font-size: 1.3rem;
+  color: var(--yellow);
+}
