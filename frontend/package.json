@@ -18,7 +18,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && yes |cp -arpf build /home/nas/project/blog/backend",
+    "build": "react-scripts build && yes |cp -arpf build /home/nas/project/odap/backend",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
