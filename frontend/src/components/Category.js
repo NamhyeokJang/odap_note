@@ -1,18 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai'
+import { modifyCategory } from '../utils'
 
 import './Category.css'
 
 export default function Category({ category }) {
+  const [favorited, setFavorited] = useState(category.favorited)
 
+  const modifyFavorited = async () => {
+    modifyCategory(category.id, { favorited: !category.favorited })
+    setFavorited(prev => !prev)
+  }
 
   return (
     <div className='category'>
       <div className="category__top">
         <div className="category__title">{category.title}</div>
-        <div className="category__fav">
-          {category.favorited ? <AiFillStar /> : <AiOutlineStar />}
+        <div className="category__fav" onClick={modifyFavorited}>
+          {favorited ? <AiFillStar /> : <AiOutlineStar />}
         </div>
       </div>
       <div className='category__bottom'>
