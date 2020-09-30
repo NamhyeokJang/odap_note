@@ -18,6 +18,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "dev-build": "react-scripts build",
     "build": "react-scripts build && yes |cp -arpf build /home/nas/project/odap/backend",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

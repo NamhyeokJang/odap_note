@@ -3,7 +3,7 @@ import { Category } from '.'
 
 import './CategoryList.css'
 
-export default function CategoryList({ categories }) {
+export default function CategoryList({ categories = [] }) {
   return (
     <div className='category-list'>
       {categories ? '데이터가 없습니다.' :

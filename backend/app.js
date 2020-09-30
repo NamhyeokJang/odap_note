@@ -9,9 +9,6 @@ const sequelize = require('./models').sequelize
 const app = express();
 
 sequelize.sync()
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
 
 app.use(cors())
 app.use(logger('dev'));
