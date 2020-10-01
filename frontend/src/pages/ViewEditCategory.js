@@ -45,16 +45,30 @@ export default function ViewEditCategory() {
       <h1>{category.title}</h1>
       <CSVReader onFileLoaded={onFileLoaded} />
       {category.questions.map(q =>
-        <div key={q.id} className='view-editor-category__question'>
-          <label >문제</label>
-          <EditableDiv id={q.id} type='question'>{q.question}</EditableDiv>
-          <label>정답</label>
-          <EditableDiv id={q.id} type='answer'>{q.answer}</EditableDiv>
-          <Button onClick={() => handleDeleteQuestion(q.id)} style={{ marginTop: '10px' }}>삭제</Button>
-        </div>)}
+        <Question q={q} _delete={handleDeleteQuestion} />)}
     </div>
   )
 };
+
+const Question = ({ q, _delete, }) => {
+  const [excluded, setExcluded] = useState(q.excluded)
+
+  const handleExclude = () => {
+    modifyQuestion(q.id, { excluded: !excluded })
+    setExcluded(prev => !prev)
+  }
+
+  return (
+    <div key={q.id} className={`view-editor-category__question ${excluded ? 'q--excluded' : ''}`} >
+      <label >문제</label>
+      <EditableDiv id={q.id} type='question'>{q.question}</EditableDiv>
+      <label>정답</label>
+      <EditableDiv id={q.id} type='answer'>{q.answer}</EditableDiv>
+      <Button onClick={() => _delete(q.id)} style={{ marginTop: '10px', marginRight: '10px' }}>삭제</Button>
+      <Button onClick={handleExclude}>제외</Button>
+    </div>
+  )
+}
 
 const EditableDiv = ({ id, type, children }) => {
   const divRef = useRef()

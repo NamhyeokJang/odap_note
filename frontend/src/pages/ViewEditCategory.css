@@ -9,3 +9,7 @@
 .view-editor-category__question label {
   text-decoration: underline;
 }
+
+.q--excluded {
+  color: gray
+}

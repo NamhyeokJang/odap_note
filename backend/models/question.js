@@ -11,6 +11,10 @@ module.exports = (sequelize, DataTypes) => {
     important: {
       type: DataTypes.BOOLEAN,
       defaultValue: false
+    },
+    excluded: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
     }
   })
 }
