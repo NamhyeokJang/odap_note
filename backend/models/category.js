@@ -9,5 +9,9 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.BOOLEAN,
       defaultValue: false
     },
+    excluded: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    }
   })
 }
