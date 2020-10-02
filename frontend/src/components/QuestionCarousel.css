@@ -27,6 +27,9 @@
   position: absolute;
   bottom: 0;
   width: 100%;
+}
+
+.question-carousel__question-top {
   display: flex;
   justify-content: space-between;
 }

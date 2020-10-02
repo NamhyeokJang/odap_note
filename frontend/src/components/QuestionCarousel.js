@@ -68,11 +68,13 @@ const Question = ({ q, isAnswer, setIsAnswer, handleNext }) => {
         {isAnswer ? q.answer : q.question}
       </div>
       <div className="question-carousel__question-handler">
-        <Button size='large' onClick={() => handleNext(q.id, false)}>틀렸습니다</Button>
-        <Button size='large' onClick={() => setIsAnswer(prev => !prev)}>
-          {isAnswer ? '문제보기' : '정답보기'}
-        </Button>
-        <Button size='large' onClick={() => handleNext(q.id, true)}>맞았습니다</Button>
+        <div className="question-carousel__question-top">
+          <Button size='large' onClick={() => handleNext(q.id, false)}>틀렸습니다</Button>
+          <Button size='large' onClick={() => setIsAnswer(prev => !prev)}>
+            {isAnswer ? '문제보기' : '정답보기'}
+          </Button>
+          <Button size='large' onClick={() => handleNext(q.id, true)}>맞았습니다</Button>
+        </div>
       </div>
     </div>
   )

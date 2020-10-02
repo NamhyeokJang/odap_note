@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { Question, sequelize } = require('../../models')
+const { Question, sequelize, Log, Sequelize } = require('../../models')
 
 router.get('/', async (req, res) => {
   const LIMIT = 10
@@ -20,11 +20,18 @@ router.get('/', async (req, res) => {
     }
   }
 
-
   const questions = await Question.findAll({
-    where: where,
+    where: {
+      ...where,
+    },
     limit: LIMIT,
-    offset: LIMIT * (page - 1)
+    offset: LIMIT * (page - 1),
+    attributes: {
+      exclude: ['categoryId'],
+    },
+    include: {
+      model: Log,
+    }
   })
   res.json({ result: 'ok', questions: questions })
 })
