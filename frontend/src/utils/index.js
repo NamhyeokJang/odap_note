@@ -8,6 +8,7 @@ import {
   createQuestions
 } from './category'
 import { modifyQuestion, deleteQuestion } from './question'
+import { fetchLogs } from './logs'
 import { createLog } from './log'
 
 
@@ -22,5 +23,6 @@ export {
   createQuestions,
   modifyQuestion,
   deleteQuestion,
+  fetchLogs,
   createLog
 }

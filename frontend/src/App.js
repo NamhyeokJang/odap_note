@@ -8,7 +8,8 @@ import {
   ViewMain,
   ViewQuestion,
   ViewEditor,
-  ViewEditCategory
+  ViewEditCategory,
+  ViewRecords
 } from './pages'
 import { Header } from './components'
 
@@ -23,6 +24,7 @@ function App() {
         <Route exact path='/view/:id' component={ViewQuestion} />
         <Route exact path='/edit' component={ViewEditor} />
         <Route exact path='/edit/:id' component={ViewEditCategory} />
+        <Route exact path='/record' component={ViewRecords} />
       </Switch>
     </Router>
   );

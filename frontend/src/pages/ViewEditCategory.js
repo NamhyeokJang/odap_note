@@ -1,8 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useParams } from 'react-router-dom'
 import CSVReader from 'react-csv-reader'
+import { FiAlertTriangle } from 'react-icons/fi'
 import { Button } from 'antd'
-import { createQuestions, fetchCategory, modifyQuestion, deleteQuestion } from '../utils'
+import {
+  createQuestions,
+  fetchCategory,
+  modifyQuestion,
+  deleteQuestion
+} from '../utils'
 
 import './ViewEditCategory.css'
 
@@ -35,7 +41,7 @@ export default function ViewEditCategory() {
   }
 
   useEffect(() => {
-    fetchCategory(id).then(res => {
+    fetchCategory(id, '?edit=true').then(res => {
       setCategory(res)
     })
   }, [id])
@@ -45,11 +51,12 @@ export default function ViewEditCategory() {
       <h1>{category.title}</h1>
       <CSVReader onFileLoaded={onFileLoaded} />
       {category.questions.map(q =>
-        <Question q={q} _delete={handleDeleteQuestion} />)}
+        <Question key={q.id} q={q} _delete={handleDeleteQuestion} />)}
     </div>
   )
 };
 
+/* Question Component */
 const Question = ({ q, _delete, }) => {
   const [excluded, setExcluded] = useState(q.excluded)
 
@@ -60,6 +67,17 @@ const Question = ({ q, _delete, }) => {
 
   return (
     <div key={q.id} className={`view-editor-category__question ${excluded ? 'q--excluded' : ''}`} >
+      <div className="view-editor-category__question__records">
+        <span style={{ fontWeight: 'bold', marginRight: '10px' }}>
+          푼 횟수: {q.logs.length}
+        </span>
+        <span style={{ color: 'var(--blue)', marginRight: '10px' }}>
+          맞은 횟수: {q.logs.filter(t => t.type === 'success').length}
+        </span>
+        <span style={{ color: 'var(--red)' }}>
+          틀린 횟수: {q.logs.filter(t => t.type === 'fail').length}
+        </span>
+      </div>
       <label >문제</label>
       <EditableDiv id={q.id} type='question'>{q.question}</EditableDiv>
       <label>정답</label>

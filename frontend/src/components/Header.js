@@ -24,11 +24,11 @@ export default function Header() {
         <div
           className={`header__menu-container ${menuOpen ? 'active' : ''}`}
         >
-          <Link to='/edit' onClick={() => setMenuOpen(prev => !prev)}>
-            <div className="header__menu">Editor</div>
+          <Link to='/record' onClick={() => setMenuOpen(prev => !prev)}>
+            <div className="header__menu">기록</div>
           </Link>
-          <Link to='#'>
-            <div className="header__menu">test1</div>
+          <Link to='/edit' onClick={() => setMenuOpen(prev => !prev)}>
+            <div className="header__menu">문제 편집</div>
           </Link>
           <Link to='#'>
             <div className="header__menu">test2</div>

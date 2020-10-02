@@ -5,6 +5,9 @@ router.get('/today', async (req, res) => {
   const category = {
     title: '오늘의 학습',
     questions: await Question.findAll({
+      where: {
+        excluded: false
+      },
       limit: 20,
       order: sequelize.random()
     })
@@ -28,6 +31,7 @@ router.get('/weak', async (req, res) => {
 router.get('/:id', async (req, res) => {
   const { id } = req.params
   const order = req.query.order === 'random' ? sequelize.random() : null
+  const edit = req.query.edit ? null : { excluded: false }
 
   try {
     const category = await Category.findOne({
@@ -36,6 +40,14 @@ router.get('/:id', async (req, res) => {
       },
       include: {
         model: Question,
+        where: edit,
+        attributes: {
+          exclude: ['categoryId']
+        },
+        include: {
+          model: Log,
+          attributes: ['type'],
+        }
       },
       order: order
     })

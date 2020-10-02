@@ -43,7 +43,7 @@ export default function ViewEditor() {
         </Button>
       </div>
       <div className="view-editor__category-container">
-        {categories.map(ctg =>
+        {categories ? categories.map(ctg =>
           <div key={ctg.id} className="view-editor__category">
             <div className="view-editor__category-title">
               {ctg.title}
@@ -63,7 +63,7 @@ export default function ViewEditor() {
               </div>
             </div>
           </div>
-        )}
+        ) : '데이터가 없습니다'}
       </div>
     </div>
   )

@@ -1,0 +1,11 @@
+
+
+.view-records__log {
+  margin-bottom: 10px;
+  border-bottom: 1px solid gray;
+}
+
+.view-records__log-status {
+  display: flex;
+  align-items: center;
+}

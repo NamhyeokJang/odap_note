@@ -4,6 +4,7 @@ const API = `${process.env.REACT_APP_API}/api/category`
 
 /* Fetch Category data */
 export async function fetchCategory(id, query) {
+  query = query ? query : ''
   const { data } = await axios.get(`${API}/${id}${query}`)
 
   return data.category
