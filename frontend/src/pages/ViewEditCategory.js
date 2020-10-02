@@ -59,6 +59,7 @@ export default function ViewEditCategory() {
 /* Question Component */
 const Question = ({ q, _delete, }) => {
   const [excluded, setExcluded] = useState(q.excluded)
+  const logs = q.logs ? q.logs : []
 
   const handleExclude = () => {
     modifyQuestion(q.id, { excluded: !excluded })
@@ -69,13 +70,13 @@ const Question = ({ q, _delete, }) => {
     <div key={q.id} className={`view-editor-category__question ${excluded ? 'q--excluded' : ''}`} >
       <div className="view-editor-category__question__records">
         <span style={{ fontWeight: 'bold', marginRight: '10px' }}>
-          푼 횟수: {q.logs.length}
+          푼 횟수: {logs.length}
         </span>
         <span style={{ color: 'var(--blue)', marginRight: '10px' }}>
-          맞은 횟수: {q.logs.filter(t => t.type === 'success').length}
+          맞은 횟수: {logs.filter(t => t.type === 'success').length}
         </span>
         <span style={{ color: 'var(--red)' }}>
-          틀린 횟수: {q.logs.filter(t => t.type === 'fail').length}
+          틀린 횟수: {logs.filter(t => t.type === 'fail').length}
         </span>
       </div>
       <label >문제</label>
