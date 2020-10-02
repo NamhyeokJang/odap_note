@@ -9,3 +9,7 @@
   display: flex;
   align-items: center;
 }
+
+.view-records__question { 
+  margin-bottom: 10px;
+}

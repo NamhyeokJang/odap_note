@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Helmet } from 'react-helmet'
 import { Button } from 'antd'
 import moment from 'moment'
 import 'moment/locale/ko'
@@ -19,14 +20,19 @@ export default function ViewRecords() {
   }, [])
 
   return (
-    <div className="view-records view container">
-      <div className="view-records__top">
-        공부한 문제 수: {count}
+    <>
+      <Helmet>
+        <title>기록</title>
+      </Helmet>
+      <div className="view-records view container">
+        <div className="view-records__top">
+          공부한 문제 수: {count}
+        </div>
+        <div className="view-records__logs-container">
+          {logs.map(log => <Log key={log.id} log={log} />)}
+        </div>
       </div>
-      <div className="view-records__logs-container">
-        {logs.map(log => <Log key={log.id} log={log} />)}
-      </div>
-    </div>
+    </>
   )
 };
 
@@ -42,7 +48,7 @@ const Log = ({ log }) => {
         }
       </div>
       <div className='view-records__question'>
-        <p style={{ margin: 0 }}>{isAnswer ? log.question.answer : log.question.question}</p>
+        <p style={{ marginBottom: '10px', fontSize: '1rem', fontWeight: '500' }}>{isAnswer ? log.question.answer : log.question.question}</p>
         <Button onClick={() => setIsAnswer(prev => !prev)}>
           {isAnswer ? '문제' : '정답'}
         </Button>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { Helmet } from 'react-helmet'
 import { useParams } from 'react-router-dom'
 import CSVReader from 'react-csv-reader'
-import { FiAlertTriangle } from 'react-icons/fi'
 import { Button } from 'antd'
 import {
   createQuestions,
@@ -47,12 +47,17 @@ export default function ViewEditCategory() {
   }, [id])
 
   return (
-    <div className='view-editor-category container view'>
-      <h1>{category.title}</h1>
-      <CSVReader onFileLoaded={onFileLoaded} />
-      {category.questions.map(q =>
-        <Question key={q.id} q={q} _delete={handleDeleteQuestion} />)}
-    </div>
+    <>
+      <Helmet>
+        <title>문제편집: {category.title}</title>
+      </Helmet>
+      <div className='view-editor-category container view'>
+        <h1>{category.title}</h1>
+        <CSVReader onFileLoaded={onFileLoaded} />
+        {category.questions.map(q =>
+          <Question key={q.id} q={q} _delete={handleDeleteQuestion} />)}
+      </div>
+    </>
   )
 };
 

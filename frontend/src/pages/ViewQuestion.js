@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Helmet } from 'react-helmet'
 import { useParams, useLocation } from 'react-router-dom'
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai'
 import { QuestionCarousel } from '../components'
@@ -31,16 +32,21 @@ export default function ViewQuestion() {
   }, [id, search])
 
   return (
-    <div className="view-question view container">
-      <div className="view-question__top">
-        <div className="view-question__title">
-          {category.title}
+    <>
+      <Helmet>
+        <title>{category.title}</title>
+      </Helmet>
+      <div className="view-question view container">
+        <div className="view-question__top">
+          <div className="view-question__title">
+            {category.title}
+          </div>
+          <div className='view-question__fav' onClick={modifyFavorited}>
+            {category.favorited ? <AiFillStar /> : <AiOutlineStar />}
+          </div>
         </div>
-        <div className='view-question__fav' onClick={modifyFavorited}>
-          {category.favorited ? <AiFillStar /> : <AiOutlineStar />}
-        </div>
+        <QuestionCarousel questions={category.questions} loading={loading} />
       </div>
-      <QuestionCarousel questions={category.questions} loading={loading} />
-    </div>
+    </>
   )
 };
