@@ -5,9 +5,9 @@ import { AiFillStar, AiOutlineStar } from 'react-icons/ai'
 import { QuestionCarousel } from '../components'
 import { fetchCategory, modifyCategory } from '../utils'
 
-import './ViewQuestion.css'
+import './ViewQuestions.css'
 
-export default function ViewQuestion() {
+export default function ViewQuestionsByCategory() {
   const [category, setCategory] = useState({ title: '불러오는중...', questions: [], favorited: false })
   const [loading, setLoading] = useState(true)
   const { id } = useParams()

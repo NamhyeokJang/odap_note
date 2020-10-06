@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react'
 import { Carousel, Button, Progress } from 'antd'
 import { FiBell } from 'react-icons/fi'
-import { createLog } from '../utils'
+import { createLog, modifyQuestion } from '../utils'
 
 import './QuestionCarousel.css'
 
@@ -41,7 +41,10 @@ export default function QuestionCarousel({ questions, loading }) {
         {questions.map(q =>
           <Question key={q.id} q={q}
             handleNext={handleNext}
-            isAnswer={isAnswer} setIsAnswer={setIsAnswer} />
+            _next={() => carouselRef.current.next()}
+            isAnswer={isAnswer}
+            setIsAnswer={setIsAnswer}
+          />
         )}
         {loading ?
           <div className='question-carousel__question'>
@@ -58,7 +61,13 @@ export default function QuestionCarousel({ questions, loading }) {
   )
 };
 
-const Question = ({ q, isAnswer, setIsAnswer, handleNext }) => {
+const Question = ({ q, isAnswer, setIsAnswer, handleNext, _next }) => {
+
+  const handleQuestion = () => {
+    modifyQuestion(q.id, { excluded: true })
+    _next()
+  }
+
   return (
     <div className='question-carousel__question'>
       <div className='question-carousel__question-important'>
@@ -74,6 +83,9 @@ const Question = ({ q, isAnswer, setIsAnswer, handleNext }) => {
             {isAnswer ? '문제보기' : '정답보기'}
           </Button>
           <Button size='large' onClick={() => handleNext(q.id, true)}>맞았습니다</Button>
+        </div>
+        <div className='question-carousel__question-bottom'>
+          <Button size='large' onClick={handleQuestion}>문제제외</Button>
         </div>
       </div>
     </div>

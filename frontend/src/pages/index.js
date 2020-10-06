@@ -2,7 +2,8 @@
 export { default as ViewMain } from './ViewMain'
 
 /* View Questions */
-export { default as ViewQuestion } from './ViewQuestion'
+export { default as ViewQuestionsByCategory } from './ViewQuestionsByCategory'
+export { default as ViewQuestionsByQuestion } from './ViewQuestionsByQuestion'
 
 /* View Editor */
 export { default as ViewEditor } from './ViewEditor'

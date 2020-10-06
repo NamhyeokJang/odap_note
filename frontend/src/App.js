@@ -6,7 +6,8 @@ import {
 } from 'react-router-dom'
 import {
   ViewMain,
-  ViewQuestion,
+  ViewQuestionsByCategory,
+  ViewQuestionsByQuestion,
   ViewEditor,
   ViewEditCategory,
   ViewRecords
@@ -21,7 +22,8 @@ function App() {
       <Header />
       <Switch>
         <Route exact path='/' component={ViewMain} />
-        <Route exact path='/view/:id' component={ViewQuestion} />
+        <Route exact path='/view/:id' component={ViewQuestionsByCategory} />
+        <Route exact path='/quest/:type' component={ViewQuestionsByQuestion} />
         <Route exact path='/edit' component={ViewEditor} />
         <Route exact path='/edit/:id' component={ViewEditCategory} />
         <Route exact path='/record' component={ViewRecords} />

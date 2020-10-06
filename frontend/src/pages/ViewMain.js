@@ -29,8 +29,8 @@ export default function ViewMain() {
           <Link to='/view/today'>
             <Button>오늘의 학습</Button>
           </Link>
-          <Link to='/view/weak'>
-            <Button>약점 공략</Button>
+          <Link to='/quest/fail'>
+            <Button>틀린문제</Button>
           </Link>
         </div>
         {isLoading ? 'Loading...'

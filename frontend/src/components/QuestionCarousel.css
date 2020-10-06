@@ -32,4 +32,9 @@
 .question-carousel__question-top {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.question-carousel__question-bottom {
+
 }

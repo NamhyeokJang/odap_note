@@ -36,4 +36,25 @@ router.get('/', async (req, res) => {
   res.json({ result: 'ok', questions: questions })
 })
 
+router.get('/fail', async (req, res) => {
+  try {
+    const questions = await Question.findAll({
+      where: {
+        excluded: false
+      },
+      include: {
+        model: Log,
+        where: {
+          type: 'fail'
+        }
+      },
+      order: sequelize.random()
+    })
+
+    res.json({ questions: questions })
+  } catch (error) {
+    res.json({ result: 'ok', questions: questions })
+  }
+})
+
 module.exports = router

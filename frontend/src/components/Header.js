@@ -10,7 +10,7 @@ export default function Header() {
   return (
     <div className="header">
       <div className="header__wrapper container">
-        <Link to='/' onClick={() => setMenuOpen(prev => !prev)}>
+        <Link to='/' onClick={() => setMenuOpen(false)}>
           <div className='header__logo'>
             암기짱v3
         </div>
